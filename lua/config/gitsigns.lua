@@ -54,4 +54,4 @@ gs.setup {
 --      hi GitSignsDeleteInline guibg=fg guifg=bg
 --    ]]
 --  end
-})
+-- })
