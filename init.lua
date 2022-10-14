@@ -1,2 +1,4 @@
 local api = vim.api
--- gogo
+
+require'settings'
+require'packer-config'
