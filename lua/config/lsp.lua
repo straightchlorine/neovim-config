@@ -78,9 +78,8 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local capabilities = lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = require'cmp_nvim_lsp'.default_capabilities(lsp.protocol.make_client_capabilities())
+--capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
 
