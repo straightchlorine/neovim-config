@@ -1,12 +1,16 @@
 return require('packer').startup(function(use)
+  -- faster lua module loading
   use { 'lewis6991/impatient.nvim',
     config = [[require('impatient')]]
   }
 
+  -- plugin management
   use 'wbthomason/packer.nvim'
   use {'neoclide/coc.nvim', branch = 'release'}
 
+  -- lsp pictograms
   use { 'onsails/lspkind-nvim', event = 'VimEnter' }
+
   -- auto-completion engine
   use { 'hrsh7th/nvim-cmp', after = 'lspkind-nvim', config = [[require('config.nvim-cmp')]] }
 
@@ -17,7 +21,7 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
   use { 'quangnguyen30192/cmp-nvim-ultisnips', after = { 'nvim-cmp', 'ultisnips' } }
 
-  -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
+  -- nvim lsp configuration
   use { 'neovim/nvim-lspconfig', after = 'cmp-nvim-lsp', config = [[require('config.lsp')]] }
 
   use { 'nvim-lualine/lualine.nvim',
@@ -28,7 +32,6 @@ return require('packer').startup(function(use)
       event = 'VimEnter'
     }
   }
-
 
   -- themes
   use "EdenEast/nightfox.nvim"
@@ -44,6 +47,7 @@ return require('packer').startup(function(use)
    config = [[require('config.treesitter')]]
   }
 
+  -- snippets
   use { 'SirVer/ultisnips', event = 'InsertEnter' }
   use { 'honza/vim-snippets', after = 'ultisnips' }
 
@@ -57,10 +61,8 @@ return require('packer').startup(function(use)
     config = [[require('config.indent-blankline')]],
   }
 
-  -- Highlight URLs inside vim
   use { 'itchyny/vim-highlighturl', event = 'VimEnter' }
 
-  -- notification plugin
   use {
     'rcarriga/nvim-notify',
     event = 'BufEnter',
@@ -71,26 +73,19 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Automatic insertion and deletion of a pair of characters
   use { 'Raimondi/delimitMate', event = 'InsertEnter' }
 
-  -- Comment plugin
   use { 'tpope/vim-commentary', event = 'VimEnter' }
 
-  -- Show undo history visually
   use { 'simnalamburt/vim-mundo', cmd = { 'MundoToggle', 'MundoShow' } }
 
-  -- Handy unix command inside Vim (Rename, Move etc.)
   use { 'tpope/vim-eunuch', cmd = { 'Rename', 'Delete' } }
   use { 'nvim-zh/better-escape.vim', event = { 'InsertEnter' } }
 
-  -- Auto format tools
   use { 'sbdchd/neoformat', cmd = { 'Neoformat' } }
 
-  -- Git command inside vim
   use { 'tpope/vim-fugitive', event = 'User InGitRepo', config = [[require('config.fugitive')]] }
 
-  -- Better git log display
   use { 'rbong/vim-flog', requires = 'tpope/vim-fugitive', cmd = { 'Flog' } }
 
   use { 'christoomey/vim-conflicted', requires = 'tpope/vim-fugitive', cmd = { 'Conflicted' } }
@@ -102,46 +97,34 @@ return require('packer').startup(function(use)
     config = [[require('config.git-linker')]],
   }
 
-  -- Show git change (change, delete, add) signs in vim sign column
   use { 'lewis6991/gitsigns.nvim', config = [[require('config.gitsigns')]] }
 
-  -- Better git commit experience
   use { 'rhysd/committia.vim', opt = true, setup = [[vim.cmd('packadd committia.vim')]] }
 
   use { 'kevinhwang91/nvim-bqf', ft = 'qf', config = [[require('config.bqf')]] }
 
-  -- Another markdown plugin
   use { 'preservim/vim-markdown', ft = { 'markdown' } }
 
-  -- Faster footnote generation
   use { 'vim-pandoc/vim-markdownfootnotes', ft = { 'markdown' } }
 
-  -- Vim tabular plugin for manipulate tabular, required by markdown plugins
   use { 'godlygeek/tabular', cmd = { 'Tabularize' } }
 
-  -- Markdown JSON header highlight plugin
   use { 'elzr/vim-json', ft = { 'json', 'markdown' } }
 
   use { 'folke/zen-mode.nvim', cmd = 'ZenMode', config = [[require('config.zen-mode')]] }
 
   use { 'chrisbra/unicode.vim', event = 'VimEnter' }
 
-  -- Additional powerful text object for vim, this plugin should be studied
-  -- carefully to use its full power
   use { 'wellle/targets.vim', event = 'VimEnter' }
 
-  -- Plugin to manipulate character pairs quickly
   use { 'machakann/vim-sandwich', event = 'VimEnter' }
 
-  -- Add indent object for vim (useful for languages like Python)
   use { 'michaeljsmith/vim-indent-object', event = 'VimEnter' }
 
   use { 'tmux-plugins/vim-tmux', ft = { 'tmux' } }
 
-    -- Modern matchit implementation
   use { 'andymass/vim-matchup', event = 'VimEnter' }
 
-  -- Smoothie motions
   use {
     'karb94/neoscroll.nvim',
     event = 'VimEnter',
@@ -151,19 +134,14 @@ return require('packer').startup(function(use)
       end, 2000)
     end,
   }
-  -- Asynchronous command execution
   use { 'skywind3000/asyncrun.vim', opt = true, cmd = { 'AsyncRun' } }
 
   use { 'sakhnik/nvim-gdb', run = { 'bash install.sh' }, opt = true, setup = [[vim.cmd('packadd nvim-gdb')]] }
 
-
-
-  -- Session management plugin
   use { 'tpope/vim-obsession', cmd = 'Obsession' }
 
   use { 'ojroques/vim-oscyank', cmd = { 'OSCYank', 'OSCYankReg' } }
 
-  -- The missing auto-completion for cmdline!
   use { 'gelguy/wilder.nvim', opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
 
   use {
@@ -176,10 +154,8 @@ return require('packer').startup(function(use)
         end,
       }
 
-  -- show and trim trailing whitespaces
   use { 'jdhao/whitespace.nvim', event = 'VimEnter' }
 
-  -- file explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -188,9 +164,8 @@ return require('packer').startup(function(use)
 
   use { 'ii14/emmylua-nvim', ft = 'lua' }
 
-  use { 'j-hui/fidget.nvim', after = 'nvim-lspconfig', config = [[require('config.fidget-nvim')]] } 
+  use { 'j-hui/fidget.nvim', after = 'nvim-lspconfig', config = [[require('config.fidget-nvim')]] }
 
   use { 'lervag/vimtex' }
-
 
 end)
