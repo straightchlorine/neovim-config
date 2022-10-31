@@ -28,4 +28,7 @@ vim.opt.cursorline = true
 vim.opt.hidden = true
 vim.opt.background = 'dark'
 
+vim.opt.conceallevel = 1
 vim.g.vimtex_view_general_viewer = 'zathura'
+
+
