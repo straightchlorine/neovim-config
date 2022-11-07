@@ -31,7 +31,6 @@ vim.opt.background = 'dark'
 vim.opt.conceallevel = 0
 vim.g.vimtex_view_general_viewer = 'zathura'
 
-vim.opt.spelllang="pl"
-vim.g.coc_filetype_map = 'tex: latex'
+vim.opt.spelllang="pl", "en_gb";
 
 

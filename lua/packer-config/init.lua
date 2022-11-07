@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 
   -- plugin management
   use 'wbthomason/packer.nvim'
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use {'neoclide/coc.nvim', branch = 'release', config=[[require('config..coc')]]}
 
   -- lsp pictograms
   use { 'onsails/lspkind-nvim', event = 'VimEnter' }
@@ -136,7 +136,7 @@ return require('packer').startup(function(use)
   }
   use { 'skywind3000/asyncrun.vim', opt = true, cmd = { 'AsyncRun' } }
 
-  use { 'sakhnik/nvim-gdb', run = { 'bash install.sh' }, opt = true, setup = [[vim.cmd('packadd nvim-gdb')]] }
+  use {'mfussenegger/nvim-dap'}
 
   use { 'tpope/vim-obsession', cmd = 'Obsession' }
 
