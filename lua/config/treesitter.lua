@@ -1,17 +1,13 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "bash", "cpp", "python", "java", "javascript", "ruby", "typescript", "json", "yaml", "css", "html", "markdown", "scala", "sql", "kotlin", "haskell", "dockerfile"},
-
+  ensure_installed = "all",
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
-  
 
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
-  
   incremental_selection = { enable = true },
-
   textobjects = { enable = true },
 
   -- List of parsers to ignore installing (for "all")
@@ -43,5 +39,22 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
+
   },
+
+
 }
+
+
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.sexp = {
+      install_info = {
+        url = "~/.local/parsers/tree-sitter-sexp", -- local path or git repo
+        files = {"src/parser.c"},
+        -- optional entries:
+        branch = "main", -- default branch in case of git repo if different from master
+        generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+        requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+      },
+      filetype = ".yuck", -- if filetype does not match the parser name
+    }
