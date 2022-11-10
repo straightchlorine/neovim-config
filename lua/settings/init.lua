@@ -30,8 +30,7 @@ vim.opt.background = 'dark'
 
 vim.opt.conceallevel = 0
 vim.g.vimtex_view_general_viewer = 'zathura'
+vim.cmd [[ let g:vimtex_compiler_latexmk = { 'options' : [ '-shell-escape' ] }]]
 
 vim.opt.spelllang="pl"
 vim.g.coc_filetype_map = 'tex: latex'
-
-
