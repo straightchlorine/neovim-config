@@ -42,6 +42,13 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } },
   }
 
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  -- optional
+  use {'junegunn/fzf', run = function()
+      vim.fn['fzf#install']()
+  end
+  }
+
   use { 'nvim-treesitter/nvim-treesitter',
    run = ':TSUpdate',
    config = [[require('config.treesitter')]]
