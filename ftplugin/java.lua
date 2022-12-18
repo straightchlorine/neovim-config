@@ -1,11 +1,6 @@
 -- local config = {
 --
 --
---     settings = {
---       java = {
---         signatureHelp = { enabled = true };
---       }
---     },
 --
 --     init_options = {
 --       bundles = {
@@ -124,14 +119,16 @@ local config = {
     '-configuration', jdtls_path .. '/config_linux',
     '-data', workspace_directory
   },
+
   root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
 
-settings = {
+  settings = {
     java = {
+      signatureHelp = { enabled = true };
     }
   },
 
-init_options = {
+  init_options = {
     bundles = {}
   },
 
