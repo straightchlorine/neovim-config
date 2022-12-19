@@ -1,6 +1,4 @@
 local keymap = vim.keymap
-local api = vim.api
-local uv = vim.loop
 
 -- Edit and reload nvim config file quickly
 keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
@@ -25,10 +23,6 @@ keymap.set("i", "<c-u>", "<Esc>viwUea")
 -- Turn the current word into title case
 keymap.set("i", "<c-t>", "<Esc>b~lea")
 
--- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
-keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
-keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
-
 -- Shortcut for faster save and quit
 keymap.set("n", "<leader>w", "<cmd>update<cr>", { silent = true, desc = "save buffer" })
 
@@ -44,11 +38,6 @@ keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item"
 
 keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
 keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
-
-keymap.set("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {
-  expr = true,
-  desc = "insert line above",
-})
 
 -- Move the cursor based on physical lines, not the actual lines.
 keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
