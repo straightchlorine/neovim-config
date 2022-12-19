@@ -1,0 +1,4 @@
+{
+  "Lua.telemetry.enable": false,
+  "java.jdt.ls.home": "/home/zweiss/.local/jdtls/org.eclipse.jdt.ls.product/target/repository/"
+}

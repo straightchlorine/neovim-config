@@ -24,6 +24,19 @@ return require('packer').startup(function(use)
   -- nvim lsp configuration
   use { 'neovim/nvim-lspconfig', after = 'cmp-nvim-lsp', config = [[require('config.lsp')]] }
 
+
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        local saga = require("lspsaga")
+
+        saga.init_lsp_saga({
+            -- your configuration
+        })
+    end,
+})
+
   use { 'nvim-lualine/lualine.nvim',
     requires = {
       'kyazdani42/nvim-web-devicons',
@@ -32,7 +45,9 @@ return require('packer').startup(function(use)
       event = 'VimEnter'
     }
   }
+  use {'mfussenegger/nvim-jdtls'}
 
+  use {'nvim-lua/lsp-status.nvim' }
   -- themes
   use "EdenEast/nightfox.nvim"
   vim.cmd('colorscheme carbonfox')
@@ -89,8 +104,6 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-eunuch', cmd = { 'Rename', 'Delete' } }
   use { 'nvim-zh/better-escape.vim', event = { 'InsertEnter' } }
 
-  use { 'sbdchd/neoformat', cmd = { 'Neoformat' } }
-
   use { 'tpope/vim-fugitive', event = 'User InGitRepo', config = [[require('config.fugitive')]] }
 
   use { 'rbong/vim-flog', requires = 'tpope/vim-fugitive', cmd = { 'Flog' } }
@@ -131,6 +144,8 @@ return require('packer').startup(function(use)
   use { 'tmux-plugins/vim-tmux', ft = { 'tmux' } }
 
   use { 'andymass/vim-matchup', event = 'VimEnter' }
+
+  use { 'mhartington/formatter.nvim' }
 
   use {
     'karb94/neoscroll.nvim',
