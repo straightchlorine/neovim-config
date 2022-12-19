@@ -4,19 +4,19 @@ return require('packer').startup(function(use)
     config = [[require('config.impatient')]]
   }
 
+  -- treesitter
+  use { 'nvim-treesitter/nvim-treesitter',
+   run = ':TSUpdate',
+   config = [[require('config.treesitter')]]
+  }
+
   -- plugin managers
   use {'wbthomason/packer.nvim'}
   use {'neoclide/coc.nvim', branch = 'release', config=[[require('config.coc')]]}
 
-  -- autocompletion & sources
-  use { 'onsails/lspkind-nvim', event = 'VimEnter' }
-  use { 'hrsh7th/nvim-cmp', after = 'lspkind-nvim', config = [[require('config.nvim-cmp')]] }
-  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-  use { 'neovim/nvim-lspconfig', after = 'cmp-nvim-lsp', config = [[require('config.lsp')]] }
-  use({ 'glepnir/lspsaga.nvim', after = 'nvim-lspconfig',
+  use { 'neovim/nvim-lspconfig', config = [[require('config.lsp')]] }
+  use { 'j-hui/fidget.nvim', config = [[require('config.fidget-nvim')]] }
+  use({ 'glepnir/lspsaga.nvim',
     branch = "main",
     config = function()
         local saga = require("lspsaga")
@@ -27,7 +27,33 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use { 'j-hui/fidget.nvim', after = 'nvim-lspconfig', config = [[require('config.fidget-nvim')]] }
+  use ({ 'hrsh7th/nvim-cmp',
+    requires = {
+      {
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        config = [[require('config.cmp-nvim-ultisnips')]],
+        requires = { "nvim-treesitter/nvim-treesitter" }
+      },
+      { 'amarakon/nvim-cmp-buffer-lines' },
+      { 'hrsh7th/cmp-nvim-lsp'           },
+      { 'hrsh7th/cmp-buffer'             },
+      { 'hrsh7th/cmp-calc'               },
+      { 'uga-rosa/cmp-dictionary'        },
+      { 'hrsh7th/cmp-path'               },
+      { 'hrsh7th/cmp-cmdline'            },
+      { 'hrsh7th/cmp-omni'               },
+      { 'hrsh7th/cmp-nvim-lua'           },
+      { 'f3fora/cmp-spell'               },
+    },
+    config = [[require('config.nvim-cmp')]] })
+
+
+  -- snippets
+  use { 'SirVer/ultisnips' }
+  use { 'honza/vim-snippets' }
+
+  -- autocompletion & sources
+  use { 'onsails/lspkind-nvim', event = 'VimEnter' }
   use { 'kevinhwang91/nvim-bqf', ft = 'qf', config = [[require('config.bqf')]] }
 
   use { 'nvim-telescope/telescope.nvim',
@@ -39,15 +65,7 @@ return require('packer').startup(function(use)
       vim.fn['fzf#install']()
   end}
 
-  use { 'nvim-treesitter/nvim-treesitter',
-   run = ':TSUpdate',
-   config = [[require('config.treesitter')]]
-  }
 
-  -- snippets
-  use { 'SirVer/ultisnips', event = 'InsertEnter' }
-  use { 'honza/vim-snippets', after = 'ultisnips' }
-  use { 'quangnguyen30192/cmp-nvim-ultisnips', after = { 'nvim-cmp', 'ultisnips' } }
 
   -- lsp
   use { 'mfussenegger/nvim-jdtls' }

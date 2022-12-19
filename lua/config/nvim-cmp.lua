@@ -7,34 +7,7 @@
 --        vim.fn["UltiSnips#Anon"](args.body)
 --      end,
 --    },
---    mapping = cmp.mapping.preset.insert {
---      ['<Tab>'] = function(fallback)
---        if cmp.visible() then
---          cmp.select_next_item()
---        else
---          fallback()
---        end
---      end,
---      ['<S-Tab>'] = function(fallback)
---        if cmp.visible() then
---          cmp.select_prev_item()
---        else
---          fallback()
---        end
---      end,
---      ['<Esc>'] = cmp.mapping.close(),
---      ['<C-e>'] = cmp.mapping.abort(),
---      ['<CR>'] = cmp.mapping.confirm { select = true } ,
---      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---      ['<C-f>'] = cmp.mapping.scroll_docs(4),
---    },
 --    sources = cmp.config.sources {
---      { name = 'nvim_lsp' },
---      { name = 'ultisnips' },
---      { name = 'buffer', keyword_length = 2 },
---      { name = 'emoji', insert = true },
---      { name = 'omni' },
---      { name = 'path' },
 --    },
 --    completion = {
 --      keyword_length = 1,
@@ -103,4 +76,98 @@
 --    })
 --  })
 --
+    local cmp = require'cmp'
+    --local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+    require("cmp").setup({
+      snippet = {
+        expand = function(args)
+          vim.fn["UltiSnips#Anon"](args.body)
+        end,
+      },
+      window = {
+        cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      sources = cmp.config.sources({
+        { name = 'buffer',
+          option = {
+            keyword_pattern = [[\k\+]],
+          }
+        },
+        { name = 'buffer-lines',
+          option = {},
+        },
+        { name = 'calc' },
+        { name = 'dictionary' },
+        { name = 'digraph' },
+        { name = 'emoji', insert = true },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim_lua' },
+        { name = 'omni' },
+        { name = 'path' },
+        { name = "ultisnips" },
+        { name = 'spell',
+            option = {
+                keep_all_entries = false,
+                enable_in_context = function()
+                    return true
+                end,
+            },
+        },
+      }),
+      sorting = {
+        comparators = {
+          -- distance based autocompletion sorting
+          function(...)
+            return require'cmp_buffer':compare_locality(...)
+          end,
+        }
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['<Tab>'] = function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          else
+            fallback()
+          end
+        end,
+        ['<S-Tab>'] = function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          else
+            fallback()
+          end
+        end,
+        ['<Esc>'] = cmp.mapping.close(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm { select = true } ,
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      }),
+    })
 
+        -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'nvim_lsp_document_symbol' }
+      },{
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
+
+cmp.setup.cmdline('/', {
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' }
+  }, {
+    { name = 'buffer' }
+  })
+})
