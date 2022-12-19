@@ -4,19 +4,6 @@
 --
 --
 --
---     capabilities = {
---       workspace = {
---           configuration = true
---       },
---       textDocument = {
---           completion = {
---               completionItem = {
---                   snippetSupport = true
---               }
---           }
---       }
---     },
---
 --     on_attach = function(client, bufnr)
 --       require'jdtls.setup'.add_commands()
 --       require'jdtls'.setup_dap()
@@ -94,6 +81,7 @@
 local project = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_directory = os.getenv("HOME") .. '/coding/workspace-root' .. project
 local jdtls_path = os.getenv("HOME") .. '/.local/jdtls/org.eclipse.jdt.ls.product/target/repository'
+
 local config = {
   cmd = {
     '/usr/lib/jvm/java-19-openjdk/bin/java',
@@ -116,6 +104,8 @@ local config = {
   flags = {
     allow_incremental_sync = true
   },
+
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
 
   settings = {
     java = {
