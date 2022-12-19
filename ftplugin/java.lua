@@ -3,9 +3,6 @@
 --
 --
 --
---     flags = {
---       allow_incremental_sync = true
---     },
 --
 --     capabilities = {
 --       workspace = {
@@ -116,6 +113,10 @@ local config = {
 
   root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
 
+  flags = {
+    allow_incremental_sync = true
+  },
+
   settings = {
     java = {
       signatureHelp = { enabled = true };
@@ -131,6 +132,8 @@ local config = {
       vim.fn.glob("~/.local/debug/vscode-java-test/server/*.jar")
     }
   },
+
+
 
 
 }
