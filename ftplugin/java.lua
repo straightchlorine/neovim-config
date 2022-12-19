@@ -35,7 +35,7 @@ local config = {
   },
 
   init_options = {
-    bundles = bundles,
+    bundles = {}
   },
 
   on_attach = function(client, bufnr)
@@ -60,19 +60,18 @@ local config = {
         }
       }
     }
+    -- TODO: try to make it look prettier, and expandable, some kind of loop maybe
+    local bundles = {
+      -- java-debug
+      vim.fn.glob("/home/zweiss/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
+    };
 
-  local bundles = {
-    -- java-debug
-    vim.fn.glob("/home/zweiss/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
-  };
+    -- vscode-java-test
+    vim.list_extend(bundles, vim.split(vim.fn.glob("/home/zweiss/.local/debug/vscode-java-test/server/*.jar", 1), "\n"))
 
-  -- vscode-java-test
-  vim.list_extend(bundles, vim.split(vim.fn.glob("/home/zweiss/.local/debug/vscode-java-test/server/*.jar", 1), "\n"))
-
-  config['init_options'] = {
-    bundles = bundles;
-  }
-
+    config['init_options'] = {
+      bundles = bundles;
+    }
     -- format after save (according to google java format)
     vim.api.nvim_exec([[
       augroup FormatAutogroup
