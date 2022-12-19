@@ -35,13 +35,11 @@ local config = {
   },
 
   init_options = {
-    bundles = {
-    }
+    bundles = bundles,
   },
 
   on_attach = function(client, bufnr)
     require'jdtls.setup'.add_commands()
-    require'jdtls'.setup_dap({hotcodereplace = 'auto'})
     require'lspkind'.init()
     require'lspsaga'.init_lsp_saga()
     require'formatter'.setup {
@@ -63,17 +61,17 @@ local config = {
       }
     }
 
-    local bundles = {
-      -- java-debug plugin
-      vim.fn.glob("~/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
-    }
+  local bundles = {
+    -- java-debug
+    vim.fn.glob("/home/zweiss/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
+  };
 
-    -- vscode-java-test plugin
-    vim.list_extend(bundles, vim.split(vim.fn.glob("~/.local/debug/vscode-java-test/server/*.jar", 1), "\n"))
+  -- vscode-java-test
+  vim.list_extend(bundles, vim.split(vim.fn.glob("/home/zweiss/.local/debug/vscode-java-test/server/*.jar", 1), "\n"))
 
-    config['init_options'] = {
-      bundles = bundles;
-    }
+  config['init_options'] = {
+    bundles = bundles;
+  }
 
     -- format after save (according to google java format)
     vim.api.nvim_exec([[
@@ -92,6 +90,8 @@ local config = {
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]], false)
+
+    require'jdtls'.setup_dap({hotcodereplace = 'auto'})
   end,
 }
 require('jdtls').start_or_attach(config)
