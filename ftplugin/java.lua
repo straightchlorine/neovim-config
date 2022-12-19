@@ -2,12 +2,6 @@
 --
 --
 --
---     init_options = {
---       bundles = {
---         vim.fn.glob(os.getenv("HOME") .. "/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
---         vim.split(vim.fn.glob("/home/zweiss/.local/debug/vscode-java-test/server/*.jar"), "\n")
---       }
---     },
 --
 --     flags = {
 --       allow_incremental_sync = true
@@ -129,7 +123,13 @@ local config = {
   },
 
   init_options = {
-    bundles = {}
+    bundles = {
+      -- java-debug plugin
+      vim.fn.glob("~/.local/debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
+
+      -- vscode-java-test plugin
+      vim.fn.glob("~/.local/debug/vscode-java-test/server/*.jar")
+    }
   },
 
 
