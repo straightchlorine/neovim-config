@@ -84,10 +84,20 @@
     local cmp = require'cmp'
     local lspkind = require'lspkind'
 
-    --local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
     cmp.setup({
       formatting = {
         format = function(entry, vim_item)
+          vim_item.mode = ({'symbol_text'})
+          vim_item.menu = ({
+              nvim_lsp = "[LSP]",
+              ultisnips = "[US]",
+              nvim_lua = "[Lua]",
+              path = "[Path]",
+              buffer = "[Buffer]",
+              emoji = "[Emoji]",
+              omni = "[Omni]",
+          })[entry.source.name]
+
           if vim.tbl_contains({ 'path' }, entry.source.name) then
             local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
             if icon then
@@ -99,7 +109,6 @@
           return lspkind.cmp_format({ with_text = false })(entry, vim_item)
         end
       },
-
       enabled = function()
         -- disable completion in comments
         local context = require 'cmp.config.context'
@@ -111,7 +120,6 @@
             and not context.in_syntax_group("Comment")
         end
       end,
-
       snippet = {
         expand = function(args)
           vim.fn["UltiSnips#Anon"](args.body)
@@ -125,6 +133,7 @@
         { name = 'buffer',
           option = {
             keyword_pattern = [[\k\+]],
+            keyword_length = 3
           }
         },
         { name = 'buffer-lines',
@@ -277,9 +286,9 @@
             end
       }),
     },
-
+  })
         -- `:` cmdline setup.
-    cmp.setup.cmdline(':', {
+  cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = 'buffer' },
@@ -293,12 +302,12 @@
           }
         }
       })
-    })
-
-cmp.setup.cmdline('/', {
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp_document_symbol' }
-  }, {
-    { name = 'buffer' }
   })
-})
+
+  cmp.setup.cmdline('/', {
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp_document_symbol' }
+    }, {
+      { name = 'buffer' }
+    })
+  })
