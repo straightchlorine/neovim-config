@@ -10,7 +10,6 @@
 --    sources = cmp.config.sources {
 --    },
 --    completion = {
---      keyword_length = 1,
 --      completeopt = 'menu,noselect',
 --    },
 --    formatting = {
@@ -29,25 +28,6 @@
 --    },
 --  }
 --
---  vim.cmd([[
---    highlight! link CmpItemMenu Comment
---    " gray
---    highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
---    " blue
---    highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
---    highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
---    " light blue
---    highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
---    highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
---    highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
---    " pink
---    highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
---    highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
---    " front
---    highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
---    highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
---    highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
---  ]])
 --
 --  -- Set configuration for specific filetype.
 --  cmp.setup.filetype('gitcommit', {
@@ -126,14 +106,17 @@
         end,
       },
       window = {
-        cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        col_offset = -3,
+        side_padding = 0,
       },
       sources = cmp.config.sources({
         { name = 'buffer',
           option = {
             keyword_pattern = [[\k\+]],
-            keyword_length = 3
+            keyword_length = 2
           }
         },
         { name = 'buffer-lines',
@@ -287,6 +270,16 @@
       }),
     },
   })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
         -- `:` cmdline setup.
   cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
@@ -311,3 +304,22 @@
       { name = 'buffer' }
     })
   })
+
+  vim.cmd([[
+    " gray
+    highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+    " blue
+    highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+    highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+    " light blue
+    highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+    highlight! link CmpItemKindInterface CmpItemKindVariable
+    highlight! link CmpItemKindText CmpItemKindVariable
+    " pink
+    highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+    highlight! link CmpItemKindMethod CmpItemKindFunction
+    " front
+    highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+    highlight! link CmpItemKindProperty CmpItemKindKeyword
+    highlight! link CmpItemKindUnit CmpItemKindKeyword
+  ]])
