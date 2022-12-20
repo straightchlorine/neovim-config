@@ -69,13 +69,19 @@
         format = function(entry, vim_item)
           vim_item.mode = ({'symbol_text'})
           vim_item.menu = ({
-              nvim_lsp = "[LSP]",
-              ultisnips = "[US]",
-              nvim_lua = "[Lua]",
-              path = "[Path]",
               buffer = "[Buffer]",
+              buffer_lines = "[Buffer-lines]",
+              calc = "[Calc]",
+              dictionary = "[Dict]",
+              digraph = "[Digraph]",
               emoji = "[Emoji]",
+              nvim_lsp = "[LSP]",
+              nvim_lsp_signature_help = "[LSP-S]",
+              nvim_lua = "[Lua]",
               omni = "[Omni]",
+              path = "[Path]",
+              ultisnips = "[UltiSnips]",
+              spell = "[Spell]",
           })[entry.source.name]
 
           if vim.tbl_contains({ 'path' }, entry.source.name) then
@@ -120,7 +126,10 @@
           }
         },
         { name = 'buffer-lines',
-          option = {},
+          option = {
+            comments = false,
+            leading_whitespace = true,
+          },
         },
         { name = 'calc' },
         { name = 'dictionary' },
