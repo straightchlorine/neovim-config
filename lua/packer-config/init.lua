@@ -27,6 +27,18 @@ return require('packer').startup(function(use)
     end,
   })
 
+
+  use {'SirVer/ultisnips',
+      requires = {{'honza/vim-snippets', rtp = '.'}},
+      config = function()
+        vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+        vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+        vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+        vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+        vim.g.UltiSnipsRemoveSelectModeMappings = 0
+      end
+  }
+
   use ({ 'hrsh7th/nvim-cmp',
     requires = {
       {
@@ -35,6 +47,7 @@ return require('packer').startup(function(use)
         requires = { "nvim-treesitter/nvim-treesitter" }
       },
       { 'amarakon/nvim-cmp-buffer-lines' },
+      { 'kyazdani42/nvim-web-devicons',  },
       { 'hrsh7th/cmp-nvim-lsp'           },
       { 'hrsh7th/cmp-buffer'             },
       { 'hrsh7th/cmp-calc'               },
@@ -44,16 +57,13 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-omni'               },
       { 'hrsh7th/cmp-nvim-lua'           },
       { 'f3fora/cmp-spell'               },
+      { 'onsails/lspkind-nvim'           },
     },
     config = [[require('config.nvim-cmp')]] })
 
 
   -- snippets
-  use { 'SirVer/ultisnips' }
-  use { 'honza/vim-snippets' }
-
   -- autocompletion & sources
-  use { 'onsails/lspkind-nvim', event = 'VimEnter' }
   use { 'kevinhwang91/nvim-bqf', ft = 'qf', config = [[require('config.bqf')]] }
 
   use { 'nvim-telescope/telescope.nvim',

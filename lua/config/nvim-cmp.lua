@@ -76,9 +76,42 @@
 --    })
 --  })
 --
+
+    local t = function(str)
+        return vim.api.nvim_replace_termcodes(str, true, true, true)
+    end
+
     local cmp = require'cmp'
+    local lspkind = require'lspkind'
+
     --local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-    require("cmp").setup({
+    cmp.setup({
+      formatting = {
+        format = function(entry, vim_item)
+          if vim.tbl_contains({ 'path' }, entry.source.name) then
+            local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+            if icon then
+              vim_item.kind = icon
+              vim_item.kind_hl_group = hl_group
+              return vim_item
+            end
+          end
+          return lspkind.cmp_format({ with_text = false })(entry, vim_item)
+        end
+      },
+
+      enabled = function()
+        -- disable completion in comments
+        local context = require 'cmp.config.context'
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == 'c' then
+          return true
+        else
+          return not context.in_treesitter_capture("comment")
+            and not context.in_syntax_group("Comment")
+        end
+      end,
+
       snippet = {
         expand = function(args)
           vim.fn["UltiSnips#Anon"](args.body)
