@@ -1,7 +1,6 @@
 return require('packer').startup(function(use)
   -- plugin managers
   use {'wbthomason/packer.nvim'}
-  use {'neoclide/coc.nvim', branch = 'release', config=[[require('config.coc')]]}
 
   -- module loader
   use { 'lewis6991/impatient.nvim',
