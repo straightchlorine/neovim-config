@@ -45,7 +45,7 @@ local function load_options()
 
     termguicolors = true,
 		redrawtime = 1500,
-    background = 'light',
+    background = 'dark',
 
     completeopt = 'menuone,noselect',
     wildmenu = true,
@@ -107,7 +107,7 @@ local function load_options()
 		listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
     showbreak = '↳  ',
     shortmess = 'aoOTIcF',
-    showmode = false,
+    showmode = true,
 
     relativenumber = true,
     number = 'true',

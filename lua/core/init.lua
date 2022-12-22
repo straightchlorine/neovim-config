@@ -5,13 +5,14 @@
 --
 
 local load_core = function ()
-  require'impatient'.enable_profile()
-
   require'core.packer'
+
+  --require'impatient'.enable_probile()
+
   require'core.options'
   require'core.mappings'
 
-  -- add also colorscheme here
+  vim.cmd.colorscheme 'oxocarbon'
 end
 
 load_core()
