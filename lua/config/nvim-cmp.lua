@@ -119,7 +119,8 @@
         side_padding = 0,
       },
       sources = cmp.config.sources({
-        { name = 'buffer',
+        { name = 'nvim_lsp', keyword_length = 3 },
+        { name = 'buffer', keyword_length = 3,
           option = {
             keyword_pattern = [[\k\+]],
             keyword_length = 2
@@ -135,7 +136,6 @@
         { name = 'dictionary' },
         { name = 'digraph' },
         { name = 'emoji', insert = true },
-        { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'nvim_lua' },
         { name = 'omni' },
@@ -279,7 +279,6 @@
       }),
     },
   })
-
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
@@ -306,13 +305,23 @@
       })
   })
 
-  cmp.setup.cmdline('/', {
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol' }
-    }, {
-      { name = 'buffer' }
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
     })
-  })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        { name = 'cmdline' }
+      })
+    })
 
   vim.cmd([[
     " gray

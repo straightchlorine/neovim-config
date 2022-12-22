@@ -26,7 +26,6 @@ local config = {
   },
 
   -- TODO: should check out other things, maybe something interesting
-  capabilities = vim.lsp.protocol.make_client_capabilities(),
 
   settings = {
     java = {
