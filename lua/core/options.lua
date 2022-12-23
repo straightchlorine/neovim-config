@@ -33,7 +33,7 @@ local function load_options()
 
     cmdwinheight = 5,
     cmdheight = 2,
-    showcmd = false,
+    showcmd = true,
     history = 2000,
 
     winwidth = 30,

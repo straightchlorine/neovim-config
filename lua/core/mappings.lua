@@ -1,5 +1,5 @@
 -- leader key
-vim.g.keymapleader = "<Space>"
+vim.g.mapleader = "<space>"
 
 -- switching windows
 vim.keymap.set("n", "<left>", "<c-w>h")
