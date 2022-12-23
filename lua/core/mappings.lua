@@ -1,11 +1,10 @@
-local map = vim.keymap
+-- leader key
+vim.g.keymapleader = "<Space>"
 
-vim.g.mapleader = "<space>"
+-- switching windows
+vim.keymap.set("n", "<left>", "<c-w>h")
+vim.keymap.set("n", "<Right>", "<C-W>l")
+vim.keymap.set("n", "<Up>", "<C-W>k")
+vim.keymap.set("n", "<Down>", "<C-W>j")
 
--- Switch windows
-map.set("n", "<left>", "<c-w>h")
-map.set("n", "<Right>", "<C-W>l")
-map.set("n", "<Up>", "<C-W>k")
-map.set("n", "<Down>", "<C-W>j")
-
-map.set('n', '<leader>sv', '<cmd>source $MYVIMRC<cr>')
+vim.keymap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<cr>')

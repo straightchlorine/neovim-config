@@ -16,7 +16,6 @@ return require'packer'.startup(function (use)
 
   use {'nyoom-engineering/oxocarbon.nvim'}
 
-  use { 'rcarriga/nvim-notify' }
 
   use { 'hrsh7th/nvim-cmp',
     requires = {
@@ -29,8 +28,8 @@ return require'packer'.startup(function (use)
         'petertriho/cmp-git',
         requires = "nvim-lua/plenary.nvim"
       },
-      { 'amarakon/nvim-cmp-buffer-lines',},
-      { 'kyazdani42/nvim-web-devicons',  },
+      { 'amarakon/nvim-cmp-buffer-lines' },
+      { 'kyazdani42/nvim-web-devicons'   },
       { 'hrsh7th/cmp-nvim-lsp'           },
       { 'hrsh7th/cmp-buffer'             },
       { 'hrsh7th/cmp-calc'               },
@@ -47,6 +46,66 @@ return require'packer'.startup(function (use)
     },
     config = conf.nvim_cmp }
 
+  use { 'neovim/nvim-lspconfig',
+    config = conf.lsp
+  }
+
+  -- ui notifications
+  use { 'rcarriga/nvim-notify',
+    config = conf.notify
+  }
+
+  -- ui lsp processes
+  use { 'j-hui/fidget.nvim',
+    config = conf.fidget
+  }
+
+  -- nvim tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = conf.tree,
+    tag = 'nightly'
+  }
+  -- statusline
+  use { 'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true,
+      config = conf.lualine,
+      event = 'VimEnter'
+    }
+  }
+
+  -- buffer management
+  use { 'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = conf.bufferline
+  }
+
+  -- zen
+  use { 'folke/zen-mode.nvim',
+    cmd = 'ZenMode',
+    config = conf.zen
+  }
+
+  -- smooth scrolling
+  use { 'karb94/neoscroll.nvim',
+    config = conf.scroll,
+  }
+
+  -- quickfix
+  use { 'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    config = conf.bqf
+  }
+
+  use { 'skywind3000/asyncrun.vim',
+    opt = true,
+    cmd = { 'AsyncRun' }
+  }
+
   use {'SirVer/ultisnips',
       requires = {{'honza/vim-snippets', rtp = '.'}},
       config = function()
@@ -58,8 +117,105 @@ return require'packer'.startup(function (use)
       end
   }
 
-  use { 'neovim/nvim-lspconfig',
-    config = conf.lsp
+  -- file finding
+  use { 'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    requires = { 'nvim-lua/plenary.nvim' },
   }
+
+  use {'junegunn/fzf', run = function()
+      vim.fn['fzf#install']()
+  end}
+
+  -- writing
+  use { 'tpope/vim-commentary' }
+
+  use { 'tpope/vim-obsession' }
+
+  use { 'tpope/vim-eunuch' }
+
+  use { 'Raimondi/delimitMate' }
+
+  use { 'lukas-reineke/indent-blankline.nvim' }
+
+  use { 'simnalamburt/vim-mundo' }
+
+  use { 'godlygeek/tabular' }
+
+  use { 'chrisbra/unicode.vim' }
+
+  use { 'wellle/targets.vim' }
+
+  use { 'machakann/vim-sandwich' }
+
+  use { 'michaeljsmith/vim-indent-object' }
+
+  use { 'andymass/vim-matchup' }
+
+  use { 'ojroques/vim-oscyank',
+    branch = 'main'
+  }
+
+  -- git integration
+  use { 'tpope/vim-fugitive',
+    config = conf.fugitive
+  }
+
+  use { 'rbong/vim-flog',
+    requires = 'tpope/vim-fugitive',
+    cmd = { 'Flog' }
+  }
+
+  use { 'lewis6991/gitsigns.nvim',
+    config = conf.gitsigns
+  }
+
+  use { 'rhysd/committia.vim',
+    opt = true,
+    setup = [[vim.cmd('packadd committia.vim')]]
+  }
+  -- TODO: add something to deal with conflicts
+
+  -- java
+  use { 'mfussenegger/nvim-jdtls',
+    ft = { 'java' }
+  }
+
+  use { 'mfussenegger/nvim-dap',
+    ft = { 'java' }
+  }
+
+  -- lua
+  use { 'ii14/emmylua-nvim',
+    ft = { 'lua' }
+  }
+
+  -- LaTeX
+  use { 'lervag/vimtex',
+    ft = { 'latex' }
+  }
+
+  -- markdown
+  use { 'preservim/vim-markdown',
+    ft = { 'markdown' }
+  }
+
+  use { 'vim-pandoc/vim-markdownfootnotes',
+    ft = { 'markdown' }
+  }
+
+  -- JSON
+  use { 'elzr/vim-json',
+    ft = { 'json', 'markdown' }
+  }
+
+  -- tmux
+  use { 'tmux-plugins/vim-tmux',
+    ft = { 'tmux' }
+  }
+
+  -- formatter
+  -- TODO: think how to deal with multiple types ft or something else
+  use { 'mhartington/formatter.nvim' }
 
 end)

@@ -118,12 +118,8 @@ require'lspconfig'.sumneko_lua.setup {
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
-          library = {
-					  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-					},
-					maxPreload = 100000,
-					preloadFileSize = 10000,
+				maxPreload = 100000,
+				preloadFileSize = 10000,
       },
       semantic = { enable = false },
       telemetry = { enable = false },
