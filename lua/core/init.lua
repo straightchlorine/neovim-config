@@ -34,19 +34,19 @@ local function fzf_config()
     " - Popup window (center of the screen)
     let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-    " - Popup window (center of the current window)
-    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+    "" - Popup window (center of the current window)
+    "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
 
-    " - Popup window (anchored to the bottom of the current window)
-    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+    "" - Popup window (anchored to the bottom of the current window)
+    "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
 
-    " - down / up / left / right
-    let g:fzf_layout = { 'down': '40%' }
+    "" - down / up / left / right
+    "let g:fzf_layout = { 'down': '40%' }
 
     " - Window using a Vim command
-    let g:fzf_layout = { 'window': 'enew' }
-    let g:fzf_layout = { 'window': '-tabnew' }
-    let g:fzf_layout = { 'window': '10new' }
+    "let g:fzf_layout = { 'window': 'enew' }
+    "let g:fzf_layout = { 'window': '-tabnew' }
+    "let g:fzf_layout = { 'window': '10new' }
 
     " Customize fzf colors to match your color scheme
     " - fzf#wrap translates this to a set of `--color` options
@@ -70,8 +70,11 @@ local function fzf_config()
     " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
     "   'previous-history' instead of 'down' and 'up'.
     let g:fzf_history_dir = '~/.local/share/fzf-history'
-  ]])
 
+    command! GitFZF call fzf#run({'source': 'git ls-files', 'sink': 'e'})
+    command! DirFZF call fzf#run({'sink': 'e'})
+
+  ]])
 
 end
 
