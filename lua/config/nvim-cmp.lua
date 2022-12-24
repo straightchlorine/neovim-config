@@ -7,60 +7,39 @@ local lspkind = require'lspkind'
 
 cmp.setup({
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'text_symbol',
-      menu = ({
-        buffer = "β",
-        bufferlines = "Β",
-        calc = "κ",
-        dictionary = "Δ",
-        digraphs = "Γ",
-        emoji = "ω",
-        nvim_lsp = "λ",
-        nvim_lsp_signature_help = "Λ",
-        nvim_lua = "ι",
-        omni = "Ω",
-        path = "ζ",
-        ultisnips = "Θ",
-        spell = "φ",
-        cmdline = "Σ"
-        })
-      }
-    ),
+    format = function(entry, vim_item)
+      vim_item.mode = ({'text'})
+      vim_item.menu = ({
+          buffer = "β",
+          bufferlines = "Β",
+          calc = "κ",
+          dictionary = "Δ",
+          digraphs = "Γ",
+          emoji = "ω",
+          nvim_lsp = "λ",
+          nvim_lsp_signature_help = "Λ",
+          nvim_lua = "ι",
+          omni = "Ω",
+          path = "ζ",
+          ultisnips = "Θ",
+          spell = "φ",
+          cmdline = "Σ"
+      })[entry.source.name]
 
-    --format = function(entry, vim_item)
-    --  vim_item.mode = ({'symbol_text'})
-    --  vim_item.menu = ({
-    --      buffer = "β",
-    --      bufferlines = "Β",
-    --      calc = "κ",
-    --      dictionary = "Δ",
-    --      digraphs = "Γ",
-    --      emoji = "ω",
-    --      nvim_lsp = "λ",
-    --      nvim_lsp_signature_help = "Λ",
-    --      nvim_lua = "ι",
-    --      omni = "Ω",
-    --      path = "ζ",
-    --      ultisnips = "Θ",
-    --      spell = "φ",
-    --      cmdline = "Σ"
-    --  })[entry.source.name]
-
-    --  if vim.tbl_contains({ 'path' }, entry.source.name) then
-    --    local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
-    --    if icon then
-    --      vim_item.kind = icon
-    --      vim_item.kind_hl_group = hl_group
-    --      return vim_item
-    --    end
-    --  end
-    --  return lspkind.cmp_format({ with_text = false })(entry, vim_item)
-    --end
+      if vim.tbl_contains({ 'path' }, entry.source.name) then
+        local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+        if icon then
+          vim_item.kind = icon
+          vim_item.kind_hl_group = hl_group
+          return vim_item
+        end
+      end
+      return lspkind.cmp_format({ with_text = false })(entry, vim_item)
+    end
   },
   view = {
     entries = {
-      name = 'custom',
+      name = 'native',
       selection_order = 'near_cursor',
     }
   },
@@ -259,8 +238,11 @@ cmp.setup.cmdline(':', {
 })
 
 -- highlighting
-vim.api.nvim_set_hl(0, 'PmenuSel',                  { bg = "#282C34", fg = "NONE" })
-vim.api.nvim_set_hl(0, 'Pmenu',                     { fg = "#C5CDD9", bg = "#22252A" })
+-- TODO: write something that will take in json from wpg or some other generator and put it here
+-- TODO: manage more highlighting, possibly the nvim itself, would be cool i guess 
+vim.api.nvim_set_hl(0, 'PmenuSel',                  { bg = "#3B427B", fg = "NONE" })
+vim.api.nvim_set_hl(0, 'Pmenu',                     { fg = "#f5f6f6", bg = "#0c0d16" })
+vim.api.nvim_set_hl(0, 'PmenuSbar',                 { fg = "#f5f6f6", bg = "#0c0d16" })
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated',     { fg = "#7E8294", bg = "NONE", strikethrough = true })
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch',          { fg = "#82AAFF", bg = "NONE", bold = true,  } )
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy',     { fg = "#82AAFF", bg = "NONE", bold = true,  })
