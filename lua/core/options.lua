@@ -72,8 +72,6 @@ local function load_options()
 
 		timeout = true,
 		ttimeout = true,
-		timeoutlen = 0,
-		ttimeoutlen = 0,
 
     incsearch = true,
 		inccommand = "nosplit",
