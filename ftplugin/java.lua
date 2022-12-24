@@ -19,7 +19,7 @@ local config = {
     '-data', workspace_directory
   },
 
-  root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
+  root_dir = require'jdtls.setup'.find_root({'.git', 'mvnw', 'gradlew'}),
 
   flags = {
     allow_incremental_sync = true

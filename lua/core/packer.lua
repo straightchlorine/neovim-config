@@ -158,6 +158,8 @@ return require'packer'.startup(function (use)
     branch = 'main'
   }
 
+  use { 'mfussenegger/nvim-treehopper' }
+
   -- git integration
   use { 'tpope/vim-fugitive',
     config = conf.fugitive
@@ -179,42 +181,26 @@ return require'packer'.startup(function (use)
   -- TODO: add something to deal with conflicts
 
   -- java
-  use { 'mfussenegger/nvim-jdtls',
-    ft = { 'java' }
-  }
+  use { 'mfussenegger/nvim-jdtls' }
 
-  use { 'mfussenegger/nvim-dap',
-    ft = { 'java' }
-  }
+  use { 'mfussenegger/nvim-dap' }
 
   -- lua
-  use { 'ii14/emmylua-nvim',
-    ft = { 'lua' }
-  }
+  use { 'ii14/emmylua-nvim' }
 
   -- LaTeX
-  use { 'lervag/vimtex',
-    ft = { 'latex' }
-  }
+  use { 'lervag/vimtex' }
 
   -- markdown
-  use { 'preservim/vim-markdown',
-    ft = { 'markdown' }
-  }
+  use { 'preservim/vim-markdown' }
 
-  use { 'vim-pandoc/vim-markdownfootnotes',
-    ft = { 'markdown' }
-  }
+  use { 'vim-pandoc/vim-markdownfootnotes' }
 
   -- JSON
-  use { 'elzr/vim-json',
-    ft = { 'json', 'markdown' }
-  }
+  use { 'elzr/vim-json' }
 
   -- tmux
-  use { 'tmux-plugins/vim-tmux',
-    ft = { 'tmux' }
-  }
+  use { 'tmux-plugins/vim-tmux' }
 
   -- formatter
   -- TODO: think how to deal with multiple types ft or something else

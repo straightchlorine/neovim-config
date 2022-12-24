@@ -36,6 +36,10 @@ map( 'n', '<leader>zf', ':DirFZF<cr>', options)
 -- undo
 map( 'n', '<F5>', ':MundoToggle<cr>', options)
 
+-- kommentary
+map("n", "<leader>/", "<plug>kommentary_line_default", {})
+map("v", "<leader>/", "<plug>kommentary_visual_default", {})
+
 -- nvim tree
 map( 'n', '<leader>n', ':NvimTreeToggle<cr>', options)
 map( 'n', '<leader>nf', ':NvimTreeFindFile<cr>', options)
@@ -51,4 +55,25 @@ map( 'n', '<leader>m]', ':BufferLineMovePrev<cr>', options)
 map( 'n', '<leader>be', ':BufferLineSortByExtension<cr>', options)
 map( 'n', '<leader>bd', ':BufferLineSortByDirectory<cr>', options)
 
+-- dap
+map( 'n', '<leader>dd', ':lua require"dap".terminate() require"dapui".close()<cr>', options)
 
+map( 'n', '<F5>', ':lua require"dap".continue()<cr>', options)
+map( 'n', '<leader>dr', ':lua require"dap".continue()<cr>', options)
+
+map( 'n', '<leader>b', ':lua require"dap".toggle_breakpoint()<cr>', options)
+map( 'n', '<leader>B', ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>', options)
+map( 'n', '<leader>lp', ':lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<cr>', options)
+map( 'n', '<leader>dbl', ':lua require"dap".list_breakpoints()<cr>', options)
+map( 'n', '<leader>drc', ':lua require"dap".run_to_cursor()<cr>', options)
+map( 'n', '<leader>drl', ':lua require"dap".run_last()<cr>', options)
+
+map( 'n', '<F-9>', ':lua require"dap".step_over()<cr>', options)
+map( 'n', '<leader>dv', ':lua require"dap".step_over()<cr>', options)
+map( 'n', '<F-10>', ':lua require"dap".step_into()<cr>', options)
+map( 'n', '<leader>di', ':lua require"dap".step_into()<cr>', options)
+map( 'n', '<F-11>', ':lua require"dap".step_out()<cr>', options)
+map( 'n', '<leader>do', ':lua require"dap".step_out()<cr>', options)
+
+map( 'n', '<leader>dr', ':lua require"dap".repl.open()<cr>', options)
+map( 'o', 'm', ':lua require"tsht".nodes()', options)
