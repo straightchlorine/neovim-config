@@ -38,3 +38,15 @@ map( 'n', '<F5>', ':MundoToggle<cr>', options)
 
 -- nvim tree
 map( 'n', '<leader>n', ':NvimTreeToggle<cr>', options)
+
+-- bufferline
+map( 'n', '<leader>[c', ':BufferLineCycleNext<cr>', options)
+map( 'n', '<leader>c]', ':BufferLineCyclePrev<cr>', options)
+
+map( 'n', '<leader>[m', ':BufferLineMoveNext<cr>', options)
+map( 'n', '<leader>m]', ':BufferLineMovePrev<cr>', options)
+
+map( 'n', '<leader>be', ':BufferLineSortByExtension<cr>', options)
+map( 'n', '<leader>bd', ':BufferLineSortByDirectory<cr>', options)
+
+
