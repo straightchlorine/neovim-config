@@ -25,7 +25,7 @@ local config = {
     allow_incremental_sync = true
   },
 
-  -- TODO: should check out other things, maybe something interesting
+  -- TODO: should check out capabilities in more detail other things, maybe something interesting
 
   settings = {
     java = {
@@ -38,6 +38,7 @@ local config = {
   },
 
   on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', '')
     require'jdtls.setup'.add_commands()
     require'lspkind'.init()
     require'lspsaga'.init_lsp_saga()
@@ -89,7 +90,7 @@ local config = {
       augroup END
     ]], false)
 
-    require'jdtls'.setup_dap({hotcodereplace = 'auto'})
+    require'jdtls'.setup_dap({ hotcodereplace = 'auto' })
   end,
 }
 require('jdtls').start_or_attach(config)

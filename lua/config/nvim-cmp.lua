@@ -2,7 +2,7 @@ local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-  local cmp = require'cmp'
+local cmp = require'cmp'
 local lspkind = require'lspkind'
 
 cmp.setup({
@@ -54,6 +54,9 @@ cmp.setup({
     end,
   },
   window = {
+
+
+
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -61,8 +64,15 @@ cmp.setup({
     side_padding = 0,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'buffer', keyword_length = 3,
+    { 
+      name = 'nvim_lsp',
+      keyword_length = 3,
+      priority = 0,
+      group_index = 1,
+    },
+    { name = 'buffer',
+      keyword_length = 3,
+      group_index = 2,
       option = {
 
       }
@@ -75,7 +85,7 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'omni' },
     { name = 'path' },
-    { name = "ultisnips" },
+    { name = 'ultisnips' },
     { name = 'spell',
         option = {
             keep_all_entries = false,

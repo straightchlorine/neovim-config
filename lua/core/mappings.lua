@@ -55,10 +55,12 @@ map( 'n', '<leader>m]', ':BufferLineMovePrev<cr>', options)
 map( 'n', '<leader>be', ':BufferLineSortByExtension<cr>', options)
 map( 'n', '<leader>bd', ':BufferLineSortByDirectory<cr>', options)
 
+map( 'n', '<leader>bd', ':BufferLinePickClose<cr>', options)
+
 -- dap
 map( 'n', '<leader>dd', ':lua require"dap".terminate() require"dapui".close()<cr>', options)
 
-map( 'n', '<F5>', ':lua require"dap".continue()<cr>', options)
+map( 'n', '<F9>', ':lua require"dap".continue()<cr>', options)
 map( 'n', '<leader>dr', ':lua require"dap".continue()<cr>', options)
 
 map( 'n', '<leader>b', ':lua require"dap".toggle_breakpoint()<cr>', options)
