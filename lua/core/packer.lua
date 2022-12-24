@@ -66,6 +66,8 @@ return require'packer'.startup(function (use)
     config = conf.tree,
     tag = 'nightly'
   }
+  
+  use { 'folke/which-key.nvim' }
 
   -- statusline
   use { 'nvim-lualine/lualine.nvim',

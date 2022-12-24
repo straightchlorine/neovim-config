@@ -112,7 +112,3 @@ nvim_tree.setup {
     },
   },
 }
-
-keymap.set("n", "<space>s", function()
-  return require("nvim-tree").toggle(false, true)
-end, { silent = true, desc = "toggle nvim-tree" })
