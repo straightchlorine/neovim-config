@@ -4,7 +4,7 @@ local map = vim.api.nvim_set_keymap
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
-local options = { noremap = true }
+local options = { noremap = true, silent = true }
 
 -- switching windows
 map('n', '<left>', '<c-w>h', options)
@@ -38,6 +38,8 @@ map( 'n', '<F5>', ':MundoToggle<cr>', options)
 
 -- nvim tree
 map( 'n', '<leader>n', ':NvimTreeToggle<cr>', options)
+map( 'n', '<leader>nf', ':NvimTreeFindFile<cr>', options)
+map( 'n', '<leader>nr', ':NvimTreeRefrech<cr>', options)
 
 -- bufferline
 map( 'n', '<leader>[c', ':BufferLineCycleNext<cr>', options)
