@@ -27,7 +27,6 @@ return require'packer'.startup(function (use)
         'petertriho/cmp-git',
         requires = "nvim-lua/plenary.nvim"
       },
-      { 'amarakon/nvim-cmp-buffer-lines' },
       { 'kyazdani42/nvim-web-devicons'   },
       { 'hrsh7th/cmp-nvim-lsp'           },
       { 'hrsh7th/cmp-buffer'             },
