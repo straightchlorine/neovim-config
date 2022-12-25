@@ -27,10 +27,9 @@ cmp.setup({
       })[entry.source.name]
 
       if vim.tbl_contains({ 'path' }, entry.source.name) then
-        local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+        local icon = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
         if icon then
           vim_item.kind = icon
-          --vim_item.kind_hl_group = hl_group
           return vim_item
         end
       end
@@ -68,7 +67,7 @@ cmp.setup({
     },
   },
   sources = cmp.config.sources({
-    { 
+    {
       name = 'nvim_lsp',
       keyword_length = 3,
       priority = 0,
