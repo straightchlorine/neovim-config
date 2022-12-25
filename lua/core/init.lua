@@ -1,6 +1,23 @@
 local function vimtex_config()
-  vim.g.vimtex_latexmk_options = '-pdf -shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
+  vim.cmd([[
+    let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : '',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+        \   '-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+  ]])
   vim.g.vimtex_view_general_viewer = 'zathura'
+  vim.g.vimtex_complete_enabled = 1
+  vim.g.vimtex_comlete_bib = 'simple'
 end
 
 local function mundo_config()

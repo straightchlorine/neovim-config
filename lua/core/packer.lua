@@ -9,6 +9,7 @@ return require'packer'.startup(function (use)
 
   use { 'nvim-lua/plenary.nvim' }
 
+
   use { 'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = conf.treesitter,
@@ -158,6 +159,13 @@ return require'packer'.startup(function (use)
   }
 
   use { 'mfussenegger/nvim-treehopper' }
+
+  use { ' ludovicchabant/vim-gutentags' }
+
+  -- linting/syntax
+  use { 'neomake/neomake' }
+
+  use { 'dense-analysis/ale' }
 
   -- git integration
   use { 'tpope/vim-fugitive',

@@ -38,7 +38,7 @@ local config = {
   },
 
   on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', '')
+    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', '')
     require'jdtls.setup'.add_commands()
     require'lspkind'.init()
     require'lspsaga'.init_lsp_saga()

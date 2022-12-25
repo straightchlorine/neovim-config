@@ -15,7 +15,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
   --turning off the completion
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', '')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc()')
 
   -- buffer exclusive mappings
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -104,6 +104,7 @@ vim.diagnostic.config({
   },
 })
 
+-- lua
 require'lspconfig'.sumneko_lua.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -124,4 +125,15 @@ require'lspconfig'.sumneko_lua.setup {
       telemetry = { enable = false },
     },
   },
+}
+
+-- python
+require'lspconfig'.pyright.setup{
+  filetypes = { 'python' },
+  root_dir = require'lspconfig'.util.find_git_ancestor,
+  init_options = {
+    settings = {
+      args = {}
+    }
+  }
 }
