@@ -33,6 +33,9 @@ map( 'n', '<leader>f', ':Telescope find_files<cr>', options)
 map( 'n', '<leader>gf', ':GitFZF<cr>', options)
 map( 'n', '<leader>zf', ':DirFZF<cr>', options)
 
+-- ultisnips
+map( 'n', '<leader>ur', '<cmd>:call UltiSnips#RefreshSnippets()<cr> <esc> <cmd>:CmpUltisnipsReloadSnippets <cr>', options)
+
 -- undo
 map( 'n', '<F5>', ':MundoToggle<cr>', options)
 
