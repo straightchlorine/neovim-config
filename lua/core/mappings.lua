@@ -7,14 +7,17 @@ vim.g.mapleader = ' '
 local options = { noremap = true, silent = true }
 
 -- switching windows
-map('n', '<left>', '<c-w>h', options)
-map('n', '<right>', '<c-w>l', options)
-map('n', '<up>', '<c-w>k', options)
-map('n', '<down>', '<c-w>j', options)
+map( 'n', '<left>', '<c-w>h', options)
+map( 'n', '<right>', '<c-w>l', options)
+map( 'n', '<up>', '<c-w>k', options)
+map( 'n', '<down>', '<c-w>j', options)
+
+-- exiting terminal mode
+map( 't', '<esc>', [[<ctrl-\><ctrl-n>]], options)
 
 -- splitting the buffer
-map('n', '<leader>vs', ':vsplit<cr>', options)
-map('n', '<leader>hs', ':split<cr>', options)
+map( 'n', '<leader>vs', ':vsplit<cr>', options)
+map( 'n', '<leader>hs', ':split<cr>', options)
 
 -- searching
 map( 'n', '<leader><esc>', ':nohlsearch<cr>', options)
