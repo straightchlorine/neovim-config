@@ -1,3 +1,12 @@
+# vector
+snippet "(^|[^a-zA-Z])vv" "\vec{}" rA
+`!p snip.rv = match.group(1)`\vec { ${1:${VISUAL:}} }$0
+endsnippet
+
+# italics
+snippet tii "\textit{}"
+\textit{${1:${VISUAL:}}}$0
+endsnippet
 
 snippet ihat "TeX - ihat" m
 oh man
