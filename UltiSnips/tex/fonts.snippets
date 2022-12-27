@@ -1,3 +1,4 @@
+# fraction
 snippet "(^|[^a-zA-Z])ff" "\frac{}{}" rA
 `!p snip.rv = match.group(1)`\frac{${1:${VISUAL:}}}{$2}$0
 endsnippet
@@ -5,11 +6,6 @@ endsnippet
 # typewriter font
 snippet tt "\texttt{}"
 \texttt{$1}$0
-endsnippet
-
-# fractions
-snippet "(^|[^a-zA-Z])ff" "\frac{}{}" rA
-`!p snip.rv = match.group(1)`\frac{${1:${VISUAL:}}}{$2}$0
 endsnippet
 
 # linking url's
