@@ -1,6 +1,11 @@
-# vector
+# vector in math mode
 snippet "(^|[^a-zA-Z])vv" "\vec{}" rA
 `!p snip.rv = match.group(1)`\vec { ${1:${VISUAL:}} }$0
+endsnippet
+
+# vector outside math mode
+snippet "(^|[^a-zA-Z])mvv" "\vec{}" rA
+`!p snip.rv = match.group(1)`\$ \vec { ${1:${VISUAL:}} } \$$0
 endsnippet
 
 # italics
