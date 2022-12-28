@@ -37,6 +37,13 @@ require("bufferline").setup {
               return true
           end
 
+          if vim.bo[buf_number].filetype ~= 'qf' then
+              return true
+          end
+
+           if vim.fn.bufname(buf_number) ~= "" then
+               return true
+           end
           -- logs aren't displayed
           local logs =
               vim.tbl_filter(
