@@ -160,8 +160,6 @@ return require'packer'.startup(function (use)
 
   use { 'mfussenegger/nvim-treehopper' }
 
-  use { ' ludovicchabant/vim-gutentags' }
-
   -- linting/syntax
   use { 'neomake/neomake' }
 
@@ -209,6 +207,10 @@ return require'packer'.startup(function (use)
   -- tmux
   use { 'tmux-plugins/vim-tmux' }
 
+  -- trying out firevim
+  use { 'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
   -- formatter
   -- TODO: think how to deal with multiple types ft or something else
   use { 'mhartington/formatter.nvim' }
