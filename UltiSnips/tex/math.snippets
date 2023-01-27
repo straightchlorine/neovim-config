@@ -1,3 +1,5 @@
+# todo, properly otimize (decrease number of rA type snippets)
+
 # vectors
 snippet "(^|[^a-zA-Z])vv" "math mode vector" rA
 `!p snip.rv = match.group(1)`\vec { ${1:${VISUAL:}} }$0
@@ -99,7 +101,7 @@ snippet "(^|[^a-zA-Z])in" "in" rA
  \in ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])ni" "not in" rA
+snippet "(^|[^a-zA-Zżźćńęóąśł])ni" "not in" rA
  \notin ${1:${VISUAL:}}
 endsnippet
 
@@ -115,6 +117,6 @@ snippet "(^|[^a-zA-Z])sd" "difference" rA
  \setminus ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])sc" "complement" rA
- ^\complement ${1:${VISUAL:}}
+snippet "scc" "complement" rA
+^\complement ${1:${VISUAL:}}
 endsnippet
