@@ -22,7 +22,6 @@ snippet "kh" "TeX - khat" rA
 endsnippet
 
 # logic
-
 snippet "(^|[^a-zA-Z])lq" "logical equivalence - single" rA
  \Leftrightarrow ${2:${VISUAL:}}
 endsnippet
@@ -32,7 +31,7 @@ snippet "(^|[^a-zA-Z])leq" "logical equivalence - expresssion" rA
 endsnippet
 
 snippet "(^|[^a-zA-Z])las" "logical and - single" rA
- ${1:${VISUAL:}} \land ${2:${VISUAL:}}
+ \land ${2:${VISUAL:}}
 endsnippet
 
 snippet "(^|[^a-zA-Z])lae" "logical and - expressions" rA
@@ -40,7 +39,7 @@ snippet "(^|[^a-zA-Z])lae" "logical and - expressions" rA
 endsnippet
 
 snippet "(^|[^a-zA-Z])los" "logical or - single" rA
- ${1:${VISUAL:}} \lor ${2:${VISUAL:}}
+ \lor ${2:${VISUAL:}}
 endsnippet
 
 snippet "(^|[^a-zA-Z])loe" "logical or - expressions" rA
@@ -48,7 +47,7 @@ snippet "(^|[^a-zA-Z])loe" "logical or - expressions" rA
 endsnippet
 
 snippet "(^|[^a-zA-Z])lis" "implication - single" rA
- ${1:${VISUAL:}} \Rightarrow ${2:${VISUAL:}}
+ \Rightarrow ${2:${VISUAL:}}
 endsnippet
 
 snippet "(^|[^a-zA-Z])lie" "implication - expressions" rA
@@ -75,7 +74,21 @@ snippet "(^|[^a-zA-Z])ex" "exists quantifier" rA
  \exists_{${1:${VISUAL:}}}
 endsnippet
 
+# set theory
 snippet "(^|[^a-zA-Z])sb" "subset of" rA
  \subset ${1:${VISUAL:}}
 endsnippet
+
+snippet "(^|[^a-zA-Z])in" "in" rA
+ \in ${1:${VISUAL:}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])sa" "intersection" rA
+ \cap ${1:${VISUAL:}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])so" "sum" rA
+ \cup ${1:${VISUAL:}}
+endsnippet
+
 
