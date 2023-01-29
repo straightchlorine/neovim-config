@@ -26,20 +26,32 @@ snippet "(^|[^a-zA-Z])leq" "\Leftrightarrow (logical equivalence)" rA
 (${1:${VISUAL:}}) \Leftrightarrow (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])la" "\land (logical and)" rA
+snippet "(^|[^a-zA-Z])las" "\land (logical and)" rA
+${1:${VISUAL:}} \land ${2:${VISUAL:}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])lae" "\land (logical and)" rA
 (${1:${VISUAL:}}) \land (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])lo" "\lor (logical or)" rA
+snippet "(^|[^a-zA-Z])los" "\lor (logical or)" rA
+${1:${VISUAL:}} \lor ${2:${VISUAL:}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])loe" "\lor (logical or)" rA
 (${1:${VISUAL:}}) \lor (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])li" "implication" rA
+snippet "(^|[^a-zA-Z])lis" "implication" rA
+${1:${VISUAL:}} \Rightarrow ${2:${VISUAL:}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])lie" "implication" rA
 (${1:${VISUAL:}}) \Rightarrow (${2:${VISUAL:}})
 endsnippet
 
 snippet "(^|[^a-zA-Z])ln" "negation" rA
-\thicksim 
+\thicksim
 endsnippet
 
 snippet "(^|[^a-zA-Z])lne" "negation of the expression" rA
