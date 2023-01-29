@@ -22,15 +22,26 @@ snippet "kh" "TeX - khat" rA
 endsnippet
 
 # logic
-snippet "leq" "\Leftrightarrow" rA
-\Leftrightarrow
+snippet "(^|[^a-zA-Z])leq" "\Leftrightarrow (logical equivalence)" rA
+(${1:${VISUAL:}}) \Leftrightarrow (${2:${VISUAL:}})
 endsnippet
 
-snippet "la" "\land" rA
-\land
+snippet "(^|[^a-zA-Z])la" "\land (logical and)" rA
+(${1:${VISUAL:}}) \land (${2:${VISUAL:}})
 endsnippet
 
-snippet "li" "\land" rA
-\Rightarrow
+snippet "(^|[^a-zA-Z])lo" "\lor (logical or)" rA
+(${1:${VISUAL:}}) \lor (${2:${VISUAL:}})
 endsnippet
 
+snippet "(^|[^a-zA-Z])li" "implication" rA
+(${1:${VISUAL:}}) \Rightarrow (${2:${VISUAL:}})
+endsnippet
+
+snippet "(^|[^a-zA-Z])ln" "negation" rA
+\thicksim 
+endsnippet
+
+snippet "(^|[^a-zA-Z])lne" "negation of the expression" rA
+\thicksim (${1:${VISUAL:}})
+endsnippet
