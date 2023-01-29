@@ -22,38 +22,50 @@ snippet "kh" "TeX - khat" rA
 endsnippet
 
 # logic
-snippet "(^|[^a-zA-Z])leq" "\Leftrightarrow (logical equivalence)" rA
+snippet "(^|[^a-zA-Z])leq" "logical equivalence" rA
 (${1:${VISUAL:}}) \Leftrightarrow (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])las" "\land (logical and)" rA
+snippet "(^|[^a-zA-Z])las" "logical and - single" rA
 ${1:${VISUAL:}} \land ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])lae" "\land (logical and)" rA
+snippet "(^|[^a-zA-Z])lae" "logical and - expressions" rA
 (${1:${VISUAL:}}) \land (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])los" "\lor (logical or)" rA
+snippet "(^|[^a-zA-Z])los" "logical or - single" rA
 ${1:${VISUAL:}} \lor ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])loe" "\lor (logical or)" rA
+snippet "(^|[^a-zA-Z])loe" "logical or - expressions" rA
 (${1:${VISUAL:}}) \lor (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])lis" "implication" rA
+snippet "(^|[^a-zA-Z])lis" "implication - single" rA
 ${1:${VISUAL:}} \Rightarrow ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])lie" "implication" rA
+snippet "(^|[^a-zA-Z])lie" "implication - expressions" rA
 (${1:${VISUAL:}}) \Rightarrow (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])ln" "negation" rA
+snippet "(^|[^a-zA-Z])ln" "negation of single variable" rA
 \thicksim
 endsnippet
 
 snippet "(^|[^a-zA-Z])lne" "negation of the expression" rA
 \thicksim (${1:${VISUAL:}})
+endsnippet
+
+snippet "(^|[^a-zA-Z])mt" "text withing math mode" rA
+\text{${1:${VISUAL:}}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])fa" "for all quantifier" rA
+\forall_{${1:${VISUAL:}}}
+endsnippet
+
+snippet "(^|[^a-zA-Z])ex" "exists quantifier" rA
+\exists_{${1:${VISUAL:}}}
 endsnippet
