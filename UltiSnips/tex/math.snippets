@@ -1,11 +1,15 @@
-# vector in math mode
-snippet "(^|[^a-zA-Z])vv" "\vec{}" rA
+# vectors
+snippet "(^|[^a-zA-Z])vv" "math mode vector" rA
 `!p snip.rv = match.group(1)`\vec { ${1:${VISUAL:}} }$0
 endsnippet
 
-# vector outside math mode
-snippet "(^|[^a-zA-Z])mvv" "\vec{}" rA
+snippet "(^|[^a-zA-Z])mvv" "vector outside math mode" rA
 `!p snip.rv = match.group(1)`\$ \vec { ${1:${VISUAL:}} } \$$0
+endsnippet
+
+# sets
+snippet "(^|[^a-zA-Z])vl" "vetical line" rA
+ \vert ${1:${VISUAL:}}
 endsnippet
 
 # base vectors
@@ -30,35 +34,35 @@ snippet "(^|[^a-zA-Z])leq" "logical equivalence - expresssion" rA
  (${1:${VISUAL:}}) \Leftrightarrow (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])las" "logical and - single" rA
+snippet "(^|[^a-zA-Z])la" "logical and - single" rA
  \land ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])lae" "logical and - expressions" rA
+snippet "(^|[^a-zA-Z])laa" "logical and - expressions" rA
  (${1:${VISUAL:}}) \land (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])los" "logical or - single" rA
+snippet "(^|[^a-zA-Z])lo" "logical or - single" rA
  \lor ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])loe" "logical or - expressions" rA
+snippet "(^|[^a-zA-Z])loo" "logical or - expressions" rA
  (${1:${VISUAL:}}) \lor (${2:${VISUAL:}})
 endsnippet
 
-snippet "(^|[^a-zA-Z])lis" "implication - single" rA
+snippet "(^|[^a-zA-Z])li" "implication - single" rA
  \Rightarrow ${2:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])lie" "implication - expressions" rA
+snippet "(^|[^a-zA-Z])lii" "implication - expressions" rA
  (${1:${VISUAL:}}) \Rightarrow (${2:${VISUAL:}})
 endsnippet
 
 snippet "(^|[^a-zA-Z])ln" "negation of single variable" rA
- \thicksim
+ \thicksim ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])lne" "negation of the expression" rA
+snippet "(^|[^a-zA-Z])lnn" "negation of the expression" rA
  \thicksim (${1:${VISUAL:}})
 endsnippet
 
@@ -67,11 +71,11 @@ snippet "(^|[^a-zA-Z])mt" "text withing math mode" rA
 endsnippet
 
 snippet "(^|[^a-zA-Z])fa" "for all quantifier" rA
- \forall_{${1:${VISUAL:}}}
+ \forall_{${1:${VISUAL:}}}(${2:${VISUAL:}})
 endsnippet
 
 snippet "(^|[^a-zA-Z])ex" "exists quantifier" rA
- \exists_{${1:${VISUAL:}}}
+ \exists_{${1:${VISUAL:}}}(${2:${VISUAL:}})
 endsnippet
 
 # set theory
@@ -90,5 +94,3 @@ endsnippet
 snippet "(^|[^a-zA-Z])so" "sum" rA
  \cup ${1:${VISUAL:}}
 endsnippet
-
-
