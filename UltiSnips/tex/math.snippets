@@ -96,13 +96,14 @@ snippet "(^|[^a-zA-Z])ex" "exists quantifier" rA
 endsnippet
 
 # set theory
+snippet "((\s*)|(\$))inns" "set theory: element of" rA
+\in ${1:${VISUAL:}}
+endsnippet
+
 snippet "(^|[^a-zA-Z])sb" "subset of" rA
  \subset ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])in" "in" rA
- \in ${1:${VISUAL:}}
-endsnippet
 
 snippet nin "not in"
 \notin ${1:${VISUAL:}}
