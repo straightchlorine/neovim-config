@@ -1,126 +1,99 @@
-# todo, properly otimize (decrease number of rA type snippets)
-snippet "(^|[^a-zA-Z])ell" "endline" rA
-\\\\
+# general
+snippet "((\s+)|(\$))cb" "general: curly braces" rA
+`!p snip.rv = match.group(1)`\\{ ${1:${VISUAL:}} \\}$0
+endsnippet
+
+snippet "((\s+)|(\$))vll" "general: vetical line" rA
+`!p snip.rv = match.group(1)`\vert ${1:${VISUAL:}}$0
+endsnippet
+
+snippet "((\s+)|(\$))ovvl" "general: overline" rA
+`!p snip.rv = match.group(1)`\overline{ ${1:${VISUAL:}} }$0
+endsnippet
+
+snippet "((\s+)|(\$))mtt" "general: text within math mode" rA
+`!p snip.rv = match.group(1)`\text{${1:${VISUAL:}}}$0
 endsnippet
 
 # vectors
-snippet "(^|[^a-zA-Z])vv" "math mode vector" rA
+snippet "((\s+)|(\$))ihat" "vectors: ihat" rA
+`!p snip.rv = match.group(1)`\hat{\mathbf{i}}$0
+endsnippet
+
+snippet "((\s+)|(\$))jhat" "vectors: jhat" rA
+`!p snip.rv = match.group(1)`\hat{\mathbf{j}}$0
+endsnippet
+
+snippet "((\s+)|(\$))khat" "vectors: khat" rA
+`!p snip.rv = match.group(1)`\hat{\mathbf{k}}$0
+endsnippet
+
+snippet "((\s+)|(\$))vv" "vectors: vector inside math mode" rA
 `!p snip.rv = match.group(1)`\vec { ${1:${VISUAL:}} }$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])mvv" "vector outside math mode" rA
+snippet "((\s+)|(\$))mvv" "vector: vector outside math mode" rA
 `!p snip.rv = match.group(1)`\$ \vec { ${1:${VISUAL:}} } \$$0
 endsnippet
 
-# sets
-snippet "(^|[^a-zA-Z])es" "empty set" rA
- \varnothing
-endsnippet
-
-snippet "(^|[^a-zA-Z])cb" "curly braces" rA
- \\{ ${1:${VISUAL:}} \\}
-endsnippet
-
-snippet "(^|[^a-zA-Z])vl" "vetical line" rA
- \vert ${1:${VISUAL:}}
-endsnippet
-
-snippet "(^|[^a-zA-Z])ol" "overline" rA
- \overline{${1:${VISUAL:}}}
-endsnippet
-
-# base vectors
-snippet "ih" "TeX - ihat" rA
-\hat{\mathbf{i}}
-endsnippet
-
-snippet "jh" "TeX - jhat" rA
-\hat{\mathbf{j}}
-endsnippet
-
-snippet "kh" "TeX - khat" rA
-\hat{\mathbf{k}}
-endsnippet
-
 # logic
-snippet "(^|[^a-zA-Z])lq" "logical equivalence - single" rA
- \Leftrightarrow ${2:${VISUAL:}}
+snippet "((\s+)|(\$))liff" "logic: iff" rA
+`!p snip.rv = match.group(1)`\Leftrightarrow ${1:${VISUAL:}}$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])leq" "logical equivalence - expresssion" rA
- (${1:${VISUAL:}}) \Leftrightarrow (${2:${VISUAL:}})
+snippet "((\s+)|(\$))lla" "logic: and" rA
+`!p snip.rv = match.group(1)`\land ${1:${VISUAL:}}$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])la" "logical and - single" rA
- \land ${2:${VISUAL:}}
+snippet "((\s+)|(\$))llo" "logic: or" rA
+`!p snip.rv = match.group(1)`\lor ${1:${VISUAL:}}$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])laa" "logical and - expressions" rA
- (${1:${VISUAL:}}) \land (${2:${VISUAL:}})
+snippet "((\s+)|(\$))lli" "logic: implication" rA
+`!p snip.rv = match.group(1)`\Rightarrow ${1:${VISUAL:}}$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])lo" "logical or - single" rA
- \lor ${2:${VISUAL:}}
+snippet "((\s+)|(\$))lln" "logic: negation" rA
+`!p snip.rv = match.group(1)`\thicksim ${1:${VISUAL:}}$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])loo" "logical or - expressions" rA
- (${1:${VISUAL:}}) \lor (${2:${VISUAL:}})
+snippet "((\s+)|(\$))llfa" "logic: for all quantifier" rA
+`!p snip.rv = match.group(1)`\forall_{${1:${VISUAL:}}}(${2:${VISUAL:}})$0
 endsnippet
 
-snippet imp "implication - single"
-\Rightarrow ${2:${VISUAL:}}
-endsnippet
-
-snippet "(^|[^a-zA-Z])lii" "implication - expressions" rA
- (${1:${VISUAL:}}) \Rightarrow (${2:${VISUAL:}})
-endsnippet
-
-snippet "(^|[^a-zA-Z])ln" "negation of single variable" rA
- \thicksim ${1:${VISUAL:}}
-endsnippet
-
-snippet "(^|[^a-zA-Z])lnn" "negation of the expression" rA
- \thicksim (${1:${VISUAL:}})
-endsnippet
-
-snippet "(^|[^a-zA-Z])mt" "text withing math mode" rA
- \text{${1:${VISUAL:}}}
-endsnippet
-
-snippet "(^|[^a-zA-Z])fa" "for all quantifier" rA
- \forall_{${1:${VISUAL:}}}(${2:${VISUAL:}})
-endsnippet
-
-snippet "(^|[^a-zA-Z])ex" "exists quantifier" rA
- \exists_{${1:${VISUAL:}}}(${2:${VISUAL:}})
+snippet "((\s+)|(\$))llex" "logic: exists quantifier" rA
+`!p snip.rv = match.group(1)`\exists_{${1:${VISUAL:}}}(${2:${VISUAL:}})$0
 endsnippet
 
 # set theory
-snippet "((\s*)|(\$))inns" "set theory: element of" rA
-\in ${1:${VISUAL:}}
+snippet "((\s+)|(\$))nulls" "set theory: empty set" rA
+`!p snip.rv = match.group(1)`\varnothing$0
 endsnippet
 
-snippet "(^|[^a-zA-Z])sb" "subset of" rA
- \subset ${1:${VISUAL:}}
+snippet "((\s+)|(\$))ssin" "set theory: element of" rA
+ `!p snip.rv = match.group(1)`\in ${1:${VISUAL:}}
 endsnippet
 
-
-snippet nin "not in"
-\notin ${1:${VISUAL:}}
+snippet "((\s+)|(\$))ssub" "set theory: subset of" rA
+ `!p snip.rv = match.group(1)`\subset ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])sa" "intersection" rA
- \cap ${1:${VISUAL:}}
+snippet "((\s+)|(\$))ssnin" "set theory: not in"
+ `!p snip.rv = match.group(1)`\notin ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])so" "sum" rA
- \cup ${1:${VISUAL:}}
+snippet "((\s+)|(\$))ssint" "set theory: intersection" rA
+ `!p snip.rv = match.group(1)`\cap ${1:${VISUAL:}}
 endsnippet
 
-snippet "(^|[^a-zA-Z])sd" "difference" rA
- \setminus ${1:${VISUAL:}}
+snippet "((\s*)|(\$))ssum" "set theory: sum" rA
+ `!p snip.rv = match.group(1)`\cup ${1:${VISUAL:}}
 endsnippet
 
-snippet "scc" "complement" rA
-^\complement ${1:${VISUAL:}}
+snippet "((\s*)|(\$))ssdf" "difference" rA
+ `!p snip.rv = match.group(1)`\setminus ${1:${VISUAL:}}
+endsnippet
+
+snippet "((\s*)|(\$))ssc" "complement" rA
+`!p snip.rv = match.group(1)`^\complement ${1:${VISUAL:}}
 endsnippet
