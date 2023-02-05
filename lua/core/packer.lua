@@ -199,8 +199,6 @@ return require'packer'.startup(function (use)
   -- markdown
   use { 'preservim/vim-markdown' }
 
-  use { 'vim-pandoc/vim-markdownfootnotes' }
-
   -- JSON
   use { 'elzr/vim-json' }
 

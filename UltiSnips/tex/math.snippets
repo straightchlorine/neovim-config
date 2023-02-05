@@ -7,6 +7,22 @@ snippet "((\s+)|(\$))vll" "general: vetical line" rA
 `!p snip.rv = match.group(1)`\vert ${1:${VISUAL:}}$0
 endsnippet
 
+snippet "((\s+)|(\$))gabs" "general: vetical line" rA
+`!p snip.rv = match.group(1)`\vert ${1:${VISUAL:}} \vert$0
+endsnippet
+
+snippet "((\s+)|(\$))gfloor" "general: floor notation" rA
+`!p snip.rv = match.group(1)`\lfloor ${1:${VISUAL:}} \lfloor$0
+endsnippet
+
+snippet "((\s+)|(\$))gceil" "general: ceiling notation" rA
+`!p snip.rv = match.group(1)`\lceil ${1:${VISUAL:}} \rceil$0
+endsnippet
+
+snippet "((\s+)|(\$))gceil" "general: norm" rA
+`!p snip.rv = match.group(1)`\lVert ${1:${VISUAL:}} \lVert$0
+endsnippet
+
 snippet "((\s+)|(\$))ovvl" "general: overline" rA
 `!p snip.rv = match.group(1)`\overline{ ${1:${VISUAL:}} }$0
 endsnippet
@@ -90,10 +106,10 @@ snippet "((\s*)|(\$))ssum" "set theory: sum" rA
  `!p snip.rv = match.group(1)`\cup ${1:${VISUAL:}}
 endsnippet
 
-snippet "((\s*)|(\$))ssdf" "difference" rA
+snippet "((\s*)|(\$))ssdf" "set theory: difference" rA
  `!p snip.rv = match.group(1)`\setminus ${1:${VISUAL:}}
 endsnippet
 
-snippet "((\s*)|(\$))ssc" "complement" rA
+snippet "((\s*)|(\$))ssc" "set theory: complement" rA
 `!p snip.rv = match.group(1)`^\complement ${1:${VISUAL:}}
 endsnippet
