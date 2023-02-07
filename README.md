@@ -1,5 +1,5 @@
 # neovim-config
-configuration for neovim
+My personal neovim configuration.
 
 # key resources:
 [jdhao/nvim-config](https://github.com/jdhao/nvim-config)
