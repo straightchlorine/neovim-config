@@ -44,4 +44,12 @@ snippet problemset "problem list" b
 		\answer{}
 endsnippet
 
-
+snippet illust "illustration" b
+	\begin{figure}[htbp]
+	  \centering
+	  \includegraphics[width=${1:${VISUAL:}}]{${2:${VISUAL:}}}
+	  \caption{${3:${VISUAL:}}}
+	  \label{fig:${4:${VISUAL:}}}
+	\end{figure}
+	$0
+endsnippet
