@@ -3,6 +3,14 @@ snippet "((\s+)|(\$))supc" "superscript citation" rA
 `!p snip.rv = match.group(1)`\textsuperscript{~\cite{${1:${VISUAL:}}}}$0
 endsnippet
 
+snippet "spcr" "superscript" rA
+^{${1:${VISUAL:}}}$0
+endsnippet
+
+snippet "sbcr" "subscript" rA
+_{${1:${VISUAL:}}}$0
+endsnippet
+
 snippet "((\s+)|(\$))rf" "general reference" rA
 `!p snip.rv = match.group(1)`~\ref{${1:${VISUAL:}}}$0
 endsnippet
