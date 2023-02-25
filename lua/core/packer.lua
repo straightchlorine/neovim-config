@@ -15,7 +15,8 @@ return require'packer'.startup(function (use)
     config = conf.treesitter,
   }
 
-  use {'nyoom-engineering/oxocarbon.nvim'}
+  -- theme
+  use { "ellisonleao/gruvbox.nvim" }
 
   use { 'hrsh7th/nvim-cmp',
     requires = {
@@ -66,7 +67,7 @@ return require'packer'.startup(function (use)
     config = conf.tree,
     tag = 'nightly'
   }
-  
+
   use { 'folke/which-key.nvim' }
 
   -- statusline

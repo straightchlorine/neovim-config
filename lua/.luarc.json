@@ -39,6 +39,7 @@
         "/home/zweiss/.local/share/nvim/site/pack/packer/start/nvim-cmp-buffer-lines/after",
         "/home/zweiss/.config/nvim/after",
         "/usr/share/vim/vimfiles",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }

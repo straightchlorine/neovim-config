@@ -105,7 +105,7 @@ vim.diagnostic.config({
 })
 
 -- lua
-require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -118,8 +118,8 @@ require'lspconfig'.sumneko_lua.setup {
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
-				maxPreload = 100000,
-				preloadFileSize = 10000,
+        maxPreload = 100000,
+        preloadFileSize = 10000,
       },
       semantic = { enable = false },
       telemetry = { enable = false },
