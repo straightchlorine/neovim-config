@@ -128,7 +128,7 @@ require'lspconfig'.lua_ls.setup {
 }
 
 -- python
-require'lspconfig'.pyright.setup{
+require'lspconfig'.pyright.setup {
   filetypes = { 'python' },
   root_dir = require'lspconfig'.util.find_git_ancestor,
   init_options = {
@@ -137,3 +137,6 @@ require'lspconfig'.pyright.setup{
     }
   }
 }
+
+-- verilog/vhdl
+require'lspconfig'.hdl_checker.setup {}
