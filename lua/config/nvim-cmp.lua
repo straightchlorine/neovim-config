@@ -73,29 +73,29 @@ cmp.setup({
       priority = 0,
       group_index = 1,
     },
-    { name = 'buffer',
-      keyword_length = 3,
-      group_index = 2,
-      option = {
+    --{ name = 'buffer',
+    --  keyword_length = 3,
+    --  group_index = 2,
+    --  option = {
 
-      }
-    },
-    { name = 'calc' },
-    { name = 'dictionary' },
-    { name = 'emoji', insert = true },
+    --  }
+    --},
+    --{ name = 'calc' },
+    --{ name = 'dictionary' },
+    --{ name = 'emoji', insert = true },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lua' },
     { name = 'omni' },
     { name = 'path' },
     { name = 'ultisnips' },
-    { name = 'spell',
-        option = {
-            keep_all_entries = false,
-            enable_in_context = function()
-                return true
-            end,
-        },
-    },
+    --{ name = 'spell',
+    --    option = {
+    --        keep_all_entries = false,
+    --        enable_in_context = function()
+    --            return true
+    --        end,
+    --    },
+    --},
   }),
   sorting = {
     comparators = {
@@ -233,7 +233,7 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {
-    completion = { autocomplete = true },
+    completion = { autocomplete = false },
     view= {
       entries = {
         name = 'custom',

@@ -33,7 +33,7 @@ endsnippet
 
 # inline math
 snippet "(^|[^a-zA-Z])mm" "Inline LaTeX math" rA
-`!p snip.rv = match.group(1)`\$ ${1:${VISUAL:}} \$$0
+`!p snip.rv = match.group(1)`\( ${1:${VISUAL:}} \) $0
 endsnippet
 
 # subscript with upright text

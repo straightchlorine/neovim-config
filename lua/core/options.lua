@@ -12,7 +12,7 @@ local function load_options()
 		clipboard = 'unnamedplus',
 
     undofile = true,
-		undodir = os.getenv('HOME') .. '/cache/nvim/undo',
+		undodir = os.getenv('HOME') .. '/.cache/nvim/undo',
 
 		encoding = 'utf-8',
 
@@ -119,7 +119,7 @@ local function load_options()
 		sidescrolloff = 5,
 		mousescroll = 'ver:3,hor:6',
 
-    conceallevel = 0,
+    --conceallevel = 0,
     concealcursor = 'niv',
   }
 
